@@ -25,6 +25,8 @@ nav {
   align-items: center;
   font-size: 1.2em;
   position: relative;
+  text-decoration: none;
+  color: white;
 }
 
 .nav-item:hover {

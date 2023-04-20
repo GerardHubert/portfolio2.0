@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './styles/app.css';
+import NotFound from './components/NotFound';
 import Navbar from './components/Navbar';
 import AboutMe from './components/AboutMe';
 
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<AboutMe />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );

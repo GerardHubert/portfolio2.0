@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import githubLogo from '../images/github.png';
 import linkedinLogo from '../images/linkedin.png';
 import emailLogo from '../images/mail.png';
@@ -10,10 +11,10 @@ function Navbar(props) {
     <nav>
       <img src={avatar} alt="avatar de gérard" />
       <div className="navlist">
-        <div className="nav-item">
+        <Link to="/" className="nav-item">
           <span className="nav-link">A propos de moi</span>
           <div className="arrow"></div>
-        </div>
+        </Link>
         <div className="nav-item">
           <span className="nav-link">Compétences</span>
           <div className="arrow"></div>
