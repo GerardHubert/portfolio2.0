@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import slide1 from '../images/slide1.jpg';
 import slide2 from '../images/slide2.jpg';
 import slide3 from '../images/slide3.jpg';
 import '../styles/slider.css';
 
 function Slider(props) {
+
+  useEffect(() => {
+    setInterval(() => {
+      next()
+    }, 5000);
+  })
 
   const [positions, setPositions] = useState([1, 2, 3]);
 
@@ -32,20 +38,26 @@ function Slider(props) {
   );
 
   function handleClick(e) {
+    e.target.id === 'next-slide' ? next() : previous();
+  }
+
+  function next() {
     const newPositions = [];
     for (const position of positions) {
-      if (e.target.id === "next-slide") {
-        let newPosition = position - 1;
-        newPosition < 1 ? newPosition = 3 : newPosition = position - 1;
-        newPositions.push(newPosition);
-      }
-      if (e.target.id === "previous-slide") {
-        let newPosition = position + 1;
-        newPosition > 3 ? newPosition = 1 : newPosition = position + 1;
-        newPositions.push(newPosition);
-      }
+      let newPosition = position - 1;
+      newPosition < 1 ? newPosition = 3 : newPosition = position - 1;
+      newPositions.push(newPosition);
     }
+    setPositions(newPositions);
+  }
 
+  function previous() {
+    const newPositions = [];
+    for (const position of positions) {
+      let newPosition = position + 1;
+      newPosition > 3 ? newPosition = 1 : newPosition = position + 1;
+      newPositions.push(newPosition);
+    }
     setPositions(newPositions);
   }
 

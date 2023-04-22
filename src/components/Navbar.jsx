@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import githubLogo from '../images/github.png';
 import linkedinLogo from '../images/linkedin.png';
 import emailLogo from '../images/mail.png';
@@ -7,25 +7,27 @@ import avatar from '../images/avatar.svg';
 import '../styles/navbar.css';
 
 function Navbar(props) {
+  const location = useLocation();
+
   return (
     <nav>
       <img src={avatar} alt="avatar de gérard" />
       <div className="navlist">
         <Link to="/" className="nav-item">
           <span className="nav-link">A propos de moi</span>
-          <div className="arrow"></div>
+          {location.pathname === '/' ? <div className="arrow"></div> : null}
+        </Link>
+        <Link to='/skills' className="nav-item">
+          <span className="nav-link">Compétences</span>
+          {location.pathname === '/skills' ? <div className="arrow"></div> : null}
+        </Link>
+        <Link to='/portfolio' className="nav-item">
+          <span className="nav-link">Portfolio</span>
+          {location.pathname === '/portfolio' ? <div className="arrow"></div> : null}
         </Link>
         <div className="nav-item">
-          <span className="nav-link">Compétences</span>
-          <div className="arrow"></div>
-        </div>
-        <div className="nav-item">
-          <span className="nav-link">Portfolio</span>
-          <div className="arrow"></div>
-        </div>
-        <div className="nav-item">
           <span className="nav-link">Contact</span>
-          <div className="arrow"></div>
+          {location.pathname === '/contact' ? <div className="arrow"></div> : null}
         </div>
       </div >
       <div className="network">

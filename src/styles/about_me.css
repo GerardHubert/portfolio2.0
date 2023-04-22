@@ -5,6 +5,7 @@
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;
+  padding-left: 30px;
 }
 
 .presentation {
