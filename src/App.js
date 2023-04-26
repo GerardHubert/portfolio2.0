@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './styles/app.css';
 import NotFound from './components/NotFound';
+import Slider from './components/Slider';
 import Navbar from './components/Navbar';
 import AboutMe from './components/AboutMe';
 import Skills from './components/Skills';
@@ -11,7 +12,7 @@ function App() {
     <div className='main'>
       <Navbar />
       <Routes>
-        <Route path="/" element={<AboutMe />} />
+        <Route path="/" element={<AboutMe slider={Slider} />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/*" element={<NotFound />} />

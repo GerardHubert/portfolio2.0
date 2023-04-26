@@ -6,11 +6,6 @@ import '../styles/slider.css';
 
 function Slider(props) {
 
-  const circles = document.getElementsByClassName('circle');
-  const circle1 = document.getElementById('circle1');
-  const circle2 = document.getElementById('circle2');
-  const circle3 = document.getElementById('circle3');
-
   useEffect(() => {
     setInterval(() => {
       next()
@@ -18,7 +13,6 @@ function Slider(props) {
   });
 
   const [positions, setPositions] = useState([1, 2, 3]);
-  const [activeCircle, setActiveCircle] = useState(1);
 
   return (
     <div className="slider-section">
@@ -35,11 +29,7 @@ function Slider(props) {
           <img src={slide3} className="slide" alt="illustration d'ordinateur" />
           <span className="slide-text">Responsive: applications adaptés aux écrans mobiles</span>
         </div>
-        <div className="slider-position">
-          <div id='circle1' className='circle circle-active'></div>
-          <div id='circle2' className="circle"></div>
-          <div id='circle3' className="circle"></div>
-        </div>
+
       </div>
     </div>
   );
@@ -51,16 +41,10 @@ function Slider(props) {
       newPosition < 1 ? newPosition = 3 : newPosition = position - 1;
       newPositions.push(newPosition);
     }
-
-    document.getElementById(`circle${activeCircle}`).classList.remove('circle-active');
-    let newActiveCircle;
-    activeCircle + 1 > 3 ? newActiveCircle = 1 : newActiveCircle = activeCircle + 1;
-    document.getElementById(`circle${newActiveCircle}`).classList.add('circle-active');
-
     setPositions(newPositions);
-    setActiveCircle(newActiveCircle);
   }
 
 }
+
 
 export default Slider;

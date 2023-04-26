@@ -3,12 +3,13 @@
 :root {
   --main-color: rgb(45, 52, 54);
   --main-textcolor: white;
+  --main-hovercolor: #3498db;
 }
 
 body {
   background-color: var(--main-color);
   color: var(--main-textcolor);
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'JetBrains Mono', sans-serif;
 }
 
 .main {
