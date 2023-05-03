@@ -19,6 +19,7 @@ nav {
 
 .nav-item {
   height: 15%;
+  width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   display: flex;
   justify-content: center;
@@ -27,6 +28,7 @@ nav {
   position: relative;
   text-decoration: none;
   color: white;
+  transition: 0.2s ease-in-out
 }
 
 .nav-item:hover {
@@ -34,8 +36,9 @@ nav {
   color: #3498db;
 }
 
-.nav-item:hover .arrow {
-  display: block
+.nav-item-active {
+  background-color: white;
+  color: #3498db
 }
 
 .arrow {

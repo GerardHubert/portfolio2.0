@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: var(--main-color);
+  background-color: #3c6382;
   color: var(--main-textcolor);
   font-family: 'JetBrains Mono', sans-serif;
 }

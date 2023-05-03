@@ -13,22 +13,18 @@ function Navbar(props) {
     <nav>
       <img src={avatar} alt="avatar de gérard" />
       <div className="navlist">
-        <Link to="/" className="nav-item">
+        <Link id='home' to="/" className={location.pathname === '/' ? ' nav-item nav-item-active' : 'nav-item'}>
           <span className="nav-link">A propos de moi</span>
-          {location.pathname === '/' ? <div className="arrow"></div> : null}
         </Link>
-        <Link to='/skills' className="nav-item">
+        <Link id='skills' to='/skills' className={`nav-item ${location.pathname === '/skills' ? 'nav-item-active' : null}`} >
           <span className="nav-link">Compétences</span>
-          {location.pathname === '/skills' ? <div className="arrow"></div> : null}
         </Link>
-        <Link to='/portfolio' className="nav-item">
+        <Link id='portfolio' to='/portfolio' className={`nav-item ${location.pathname === '/portfolio' ? 'nav-item-active' : null}`}>
           <span className="nav-link">Portfolio</span>
-          {location.pathname === '/portfolio' ? <div className="arrow"></div> : null}
         </Link>
-        <div className="nav-item">
+        <Link id='contact' to='/contact' className={`nav-item ${location.pathname === '/contact' ? 'nav-item-active' : null}`}>
           <span className="nav-link">Contact</span>
-          {location.pathname === '/contact' ? <div className="arrow"></div> : null}
-        </div>
+        </Link>
       </div >
       <div className="network">
         <a href="https://www.linkedin.com/in/g%C3%A9rard-hubert-ab6213206/" target="_blank" rel="noopener noreferrer">
