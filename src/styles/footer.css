@@ -7,10 +7,11 @@ footer {
 }
 
 .footer-container {
-  background-color: #3d3d3d;
+  background-color: rgb(61, 61, 61, 0.5);
   width: 80%;
   height: 50vh;
   display: flex;
+  border-radius: 15px;
 }
 
 .contact-form-container,
@@ -136,4 +137,33 @@ footer {
 .send-button:hover {
   cursor: pointer;
   color: white;
+}
+
+.invalid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 5px;
+  font-size: 1.1em;
+  font-weight: bolder;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+  background-color: rgb(183, 21, 64);
+}
+
+.valid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  font-size: 1.1em;
+  width: 25px;
+  height: 25px;
+  bottom: 5px;
+  color: rgb(7, 153, 146);
 }

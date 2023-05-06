@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import '../styles/footer.css';
 
@@ -8,10 +8,11 @@ function Footer(props) {
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
   const [nameError, setNameError] = useState(null);
-  const [emailError, setEmailErrors] = useState(null);
-  const [contentError, setContentErrors] = useState(null);
+  const [emailError, setEmailError] = useState(null);
+  const [contentError, setContentError] = useState(null);
 
   return (
+
     <footer className="footer-section">
       <div className="footer-container">
         <section className="contact-form-container">
@@ -19,14 +20,20 @@ function Footer(props) {
             <div className="name-widget">
               <label className='name-label' htmlFor="name">votre nom</label>
               <input onChange={handleChange} type="text" name="name" id="name" className="name-input" />
+              {nameError === true && nameError !== null ? <span className='invalid'>x</span> : null}
+              {nameError === false && nameError !== null ? <i className="fa-solid fa-circle-check valid"></i> : null}
             </div>
             <div className="email-widget">
               <label htmlFor="email" className="email-label">votre adresse mail</label>
               <input onChange={handleChange} type="email" name="email" id="email" className="email-input" />
+              {emailError === true && emailError !== null ? <span className='invalid'>x</span> : null}
+              {emailError === true && emailError !== null ? <i className="fa-solid fa-circle-check valid"></i> : null}
             </div>
             <div className="content-widget">
               <label htmlFor="content" className="content-label">votre message</label>
               <textarea onChange={handleChange} name="content" id="content" cols="30" rows="10" className="textarea"></textarea>
+              {contentError === true && contentError !== null ? <span className='invalid'>x</span> : null}
+              {contentError === true && contentError !== null ? <i className="fa-solid fa-circle-check valid"></i> : null}
             </div>
             <div className="controls">
               <button id='cancel' onClick={handleClick} className="cancel-button">annuler</button>
@@ -58,12 +65,15 @@ function Footer(props) {
     switch (e.target.id) {
       case 'name':
         setName(e.target.value);
+        nameValidation(e.target.value);
         break;
       case 'email':
         setEmail(e.target.value);
+        emailValidation(e.target.value);
         break;
       case 'content':
         setContent(e.target.value);
+        contentValidation(e.target.value);
         break;
       default:
         break
@@ -87,20 +97,33 @@ function Footer(props) {
         break;
       case 'send':
         e.preventDefault();
-        console.log(validation());
+        console.log('vérifier les validations et envoyer le message');
         break;
       default:
         break;
     }
   }
 
-  function validation() {
+  function nameValidation(input) {
     const nameExpr = /^[a-zéèçàâäêëîïôöòûüùñ]?[\s?\-?a-zéèçàâäêëîïôöòûüùñ]+?$/g;
-    const emailExpr = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
-    const contentExpr = /[*$<>*/\\#]{1,}/g;
+    nameExpr.test(input) === false ? setNameError(true) : setNameError(false);
+    if (input === '') {
+      setNameError(null);
+    }
+  }
 
-    if (nameExpr.test(name) === false) {
-      setNameError('nom invalide');
+  function emailValidation(input) {
+    const emailExpr = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g;
+    emailExpr.test(input) === false ? setEmailError(true) : setEmailError(false);
+    if (input === '') {
+      setEmailError(null);
+    }
+  }
+  function contentValidation(input) {
+    const contentExpr = /[*$<>*/\\#]{1,}/g;
+    contentExpr.test(input) === true ? setContentError(true) : setContentError(false);
+    if (input === '') {
+      setContentError(null)
     }
   }
 }
