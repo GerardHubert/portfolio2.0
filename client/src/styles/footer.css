@@ -171,6 +171,33 @@ footer {
 .aside-container {
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+.mail-confirm-success,
+.mail-confirm-failure {
+  width: 80%;
+  height: 3em;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mail-confirm-success {
+  background-color: #38ada9;
+  color: black;
+  font-weight: bold;
+}
+
+.mail-confirm-failure {
+  background-color: #e55039;
+  color: black;
+  font-weight: bold;
 }
 
 .location-aside-wrapper {

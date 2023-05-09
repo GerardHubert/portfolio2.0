@@ -7,10 +7,15 @@ function Footer(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
+
+  // error initialisée à null, puis true ou false
   const [nameError, setNameError] = useState(null);
   const [emailError, setEmailError] = useState(null);
   const [contentError, setContentError] = useState(null);
-  const [mailStatus, setMailStatus] = useState(null);
+
+  // confirmation ou echec de l'envoi de l'email
+  const [mailStatusCode, setMailStatusCode] = useState(null);
+  const [mailStatusMessage, setMailStatusMessage] = useState(null);
 
   return (
 
@@ -43,6 +48,12 @@ function Footer(props) {
           </form>
         </section>
         <aside className="aside-container">
+          {mailStatusCode === 201 ?
+            <span className='mail-confirm-success'>Le message a bien été envoyé</span> :
+            null}
+          {mailStatusCode === 501 ?
+            <span className='mail-confirm-failure'>Désolé, une erreur est survenue</span> :
+            null}
           <div className="location-aside-wrapper">
             <div className="coordonates-container">
               <i className="fa-solid fa-location-dot"></i>
@@ -126,6 +137,14 @@ function Footer(props) {
       body: new URLSearchParams(message)
     });
     const data = await response.json();
+    console.log(data.status);
+    setMailStatusCode(data.status);
+
+    // si le mail est bien envoyé on reset de le formulaire
+    if (data.status === 201) {
+      resetForm();
+    }
+
   }
 
   function resetForm() {
@@ -149,6 +168,7 @@ function Footer(props) {
       setEmailError(null);
     }
   }
+
   function contentValidation(input) {
     const contentExpr = /[*$<>*/\\#]{1,}/g;
     contentExpr.test(input) === true ? setContentError(true) : setContentError(false);
