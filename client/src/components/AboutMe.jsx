@@ -24,9 +24,13 @@ function AboutMe(props) {
           <span className="letter">r</span>
           <span className="letter">a</span>
           <span className="letter">r</span>
-          <span className="letter">d</span>
+          <span className="letter">d,</span>
         </h1>
-        <p className="presentation-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit sed et repellendus provident eius deleniti quod quasi laudantium ea consectetur quas animi, nemo nisi suscipit laborum libero distinctio dolorum sapiente aperiam? Sunt doloribus saepe nam! Qui optio fuga id cum!</p>
+        <div className="presentation-text">
+          <p>un développeur web compétent à la fois dans le front-end et dans le back-end. Avec cependant une appétence particulière pour le back-end.</p>
+          <p>Organisé, méticuleux et autonome, j'accorde une importance particulière au code propre et aux bonnes pratiques</p>
+          <p>A part rester devant un écran noir à créer des interfaces ou résoudre des problème, je suis amateur de cinéma, de jeux vidéo, et de randonnées.</p>
+        </div>
       </div>
       <props.slider />
     </section>

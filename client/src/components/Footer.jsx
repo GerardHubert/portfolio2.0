@@ -155,7 +155,7 @@ function Footer(props) {
 
   function nameValidation(input) {
     const nameExpr = /^[a-zéèçàâäêëîïôöòûüùñ]?[\s?\-?a-zéèçàâäêëîïôöòûüùñ]+?$/g;
-    nameExpr.test(input) === false ? setNameError(true) : setNameError(false);
+    nameExpr.test(input.toLowerCase()) === false ? setNameError(true) : setNameError(false);
     if (input === '') {
       setNameError(null);
     }

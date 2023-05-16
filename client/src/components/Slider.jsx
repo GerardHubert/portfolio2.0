@@ -7,12 +7,12 @@ import '../styles/slider.css';
 function Slider(props) {
 
   useEffect(() => {
-    setInterval(() => {
-      next()
-    }, 5000);
+    const timer = setInterval(() => { next() }, 5000);
+    return () => clearInterval(timer);
   });
 
   const [positions, setPositions] = useState([1, 2, 3]);
+  const [activeDot, setActiveDot] = useState(0);
 
   return (
     <div className="slider-section">
@@ -29,19 +29,36 @@ function Slider(props) {
           <img src={slide3} className="slide" alt="illustration d'ordinateur" />
           <span className="slide-text">Responsive: applications adaptés aux écrans mobiles</span>
         </div>
-
+        <div className="slider-progress-container">
+          <div className="slider-progress-dots">
+            <i className={`fa-solid fa-circle dot-active`}></i>
+            <i className={`fa-solid fa-circle`}></i>
+            <i className={`fa-solid fa-circle`}></i>
+          </div>
+        </div>
       </div>
     </div>
   );
 
   function next() {
+
     const newPositions = [];
     for (const position of positions) {
       let newPosition = position - 1;
       newPosition < 1 ? newPosition = 3 : newPosition = position - 1;
       newPositions.push(newPosition);
     }
-    setPositions(newPositions);
+    setPositions(newPositions)
+
+    const dotElements = document.getElementsByClassName('fa-circle');
+    dotElements.item(activeDot).classList.remove('dot-active');
+
+    let newActiveDot;
+    activeDot + 1 > 2 ? newActiveDot = 0 : newActiveDot = activeDot + 1;
+    dotElements.item(newActiveDot).classList.add('dot-active');
+    setActiveDot(newActiveDot);
+
+
   }
 
 }
